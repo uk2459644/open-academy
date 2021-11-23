@@ -5,7 +5,7 @@ import {useParams} from 'react-router-dom';
 
 import { Link as RouterLink} from 'react-router-dom';
 // material
-import { Box, Button, Card, Link} from '@material-ui/core';
+import { Box, Button, Card, CircularProgress, Link} from '@material-ui/core';
 import { Container, Typography } from '@material-ui/core';
 import Stack from '@mui/material/Stack';
 // components
@@ -14,6 +14,7 @@ import { useQuery } from '@apollo/client';
 import ListDataSidebar from '../components/editorjs/ListDataSideBar';
 import { GET_COURSE_WITH_UNIT } from '../graphql/course/course.query';
 import ShowEditorjsData from '../components/editorjs/ShowEditorjsData';
+import { GET_UNITS_BY_COURSE_ID } from '../graphql/unit/unit.query';
 //
 
 // ----------------------------------------------------------------------
@@ -24,7 +25,7 @@ export default function UnitList() {
   const [units,setUnits]=useState([]);
   const [currentUnit,setCurrentunit]=useState(0);
   const {id}=useParams();
-   const {data,error,loading}=useQuery(GET_COURSE_WITH_UNIT,{
+   const {data,error,loading}=useQuery(GET_UNITS_BY_COURSE_ID,{
      variables:{id:id},
      skip:skiploading
    });
@@ -46,7 +47,7 @@ export default function UnitList() {
   const { resetForm, handleSubmit } = formik;
 
   if(loading){
-    return 'Loading ...';
+    return <h2>Loading... Please wait <CircularProgress /></h2>;
   }
 
   if(error){
@@ -54,9 +55,9 @@ export default function UnitList() {
   }
 
   if(data){
-    console.log(typeof data.course.units)
+    console.log(typeof data.units)
     console.log(data);
-    setUnits(data.course.units)
+    setUnits(data.units)
     setSkiploading(true);
   }
 

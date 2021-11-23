@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import { useState } from 'react';
 // material
-import { Container, Typography } from '@material-ui/core';
+import { CircularProgress, Container, Typography } from '@material-ui/core';
 import Stack from '@mui/material/Stack';
 // components
 import Page from '../components/Page';
@@ -53,7 +53,7 @@ export default function EcommerceShop() {
   const {loading,data,error}=useQuery(GET_COURSES);
 
   if(loading){
-    return null;
+    return <h2>Loading ... Please wait <CircularProgress /> </h2>;
   }
   if(error){
     return `Error! ${error}`;

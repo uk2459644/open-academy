@@ -18,6 +18,10 @@ import PhotosFolder from './pages/PhotosFolder';
 import PhotosList from './pages/PhotosList';
 import TopicList from './pages/TopicList';
 import QuestionList from './pages/QuestionList';
+import Intro from './pages/Intro';
+import SetCategory from './pages/set-pages/SetCategory';
+import SetList from './pages/set-pages/SetList';
+import SetListQuestion from './pages/set-pages/SetListQuestion';
 
 // ----------------------------------------------------------------------
 
@@ -28,9 +32,13 @@ export default function Router() {
       path: '/dashboard',
       element: <DashboardLayout />,
       children: [
-        // { path: '/', element: <Navigate to="/dashboard/app" replace /> },
-        { path: 'app', element: <DashboardApp /> },
+        { path: '', element: <Navigate to="app" replace /> },
+       // { path: '/', element: <DashboardApp /> },
+        { path: 'app', element: <Intro /> },
         { path: 'photos', element: <PhotosFolder /> },
+        {path:'sets',element:<SetCategory />},
+        {path:'sets/:id',element:<SetList />},
+        {path:'sets/:setCatId/:setId',element:<SetListQuestion />},
         { path: 'courses', element: <Products /> },
         {path:'courses/:id',element:<UnitList />},
         {path:'courses/:courseId/:unitId',element:<TopicList />},

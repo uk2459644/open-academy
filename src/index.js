@@ -1,3 +1,4 @@
+import './polyfill';
 // scroll bar
 import 'simplebar/src/simplebar.css';
 

@@ -26,7 +26,7 @@ import SimpleImage from "editorjs-simpleimage-uk";
 import Embed from "editorjs-embed-uk";
 import Alert from 'editorjs-alert-uk';
 import Option from 'editorjs-options-uk';
-
+import Chart from 'editorjs-chart';
 
 import Table from '@editorjs/table';
 import ContentSpeedDial from "../components/editorjs/ContentSpeedDial";
@@ -88,6 +88,7 @@ useEffect(()=>{
     holder: "editorjs",
     placeholder:"You can write from here.",
     tools: {
+      chart:Chart,
       table:Table,
       alert:Alert,
       option:Option,
@@ -115,6 +116,7 @@ useEffect(()=>{
         class: Checklist,
         inlineToolbar: true,
       },
+     
     },
   });
 
@@ -124,7 +126,8 @@ useEffect(()=>{
 const copyDraft=()=>{
   if (editor !== null){
     editor.save().then((savedData)=>{
-      navigator.clipboard.writeText(JSON(savedData));
+
+      navigator.clipboard.writeText(JSON.stringify(savedData));
     }).catch((error)=>{
       console.log(error);
     });

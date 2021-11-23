@@ -24,14 +24,14 @@ import Rating from '@mui/material/Rating';
 //
 import Scrollbar from '../Scrollbar';
 import ColorManyPicker from '../ColorManyPicker';
+import { pink } from '@material-ui/core/colors';
 
 // ----------------------------------------------------------------------
 
 export const FILTER_CATEGORY_OPTIONS = ['All', 'Shose', 'Apparel', 'Accessories'];
 
 // ----------------------------------------------------------------------
-
-ListDataSidebar.propTypes = {
+ QuestionDataSidebar.propTypes = {
   isOpenFilter: PropTypes.bool,
   onResetFilter: PropTypes.func,
   onOpenFilter: PropTypes.func,
@@ -41,7 +41,7 @@ ListDataSidebar.propTypes = {
   title:PropTypes.string
 };
 
-export default function ListDataSidebar({
+export default function QuestionDataSidebar({
   isOpenFilter,
   onResetFilter,
   onOpenFilter,
@@ -94,20 +94,25 @@ export default function ListDataSidebar({
                
                 <div>
                   <Typography variant="subtitle1" gutterBottom>
-                 {title} list
+                 {/* {title} list */}
                   </Typography>
                   <RadioGroup
                    {...getFieldProps('unit')}
-                  
+                  row={true}
                    onChange={handleChange}
                    >
                     {units.map((item,index) => (
                       <FormControlLabel
+                      
                        key={index} 
+                       
                        value={index.toString()} 
-                       control={<Radio />} 
+                       control={<Radio 
+                        //checked={item.userOpt !==null ? true : false}
+                       />} 
                        onChange={onResetFilter}
-                       label={item.title} />
+                       label={item.id} />
+                       
                     ))}
                   </RadioGroup>
                 </div>

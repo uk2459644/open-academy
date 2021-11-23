@@ -63,7 +63,13 @@ export default function ContentSpeedDial({handleDraft,copyDraft}) {
             key={action.name}
             icon={action.icon}
             tooltipTitle={action.name}
-            onClick={copyDraft}
+            onClick={()=>{
+              if(action.name=='Copy'){
+                copyDraft();
+              }else{
+                handleDraft();
+              }
+            }}
           />
         ))}
       </SpeedDial>

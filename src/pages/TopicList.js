@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom';
 import {Link as RouterLink} from 'react-router-dom';
 // material
 
-import { Container, Typography ,Button,Link} from '@material-ui/core';
+import { Container, Typography ,Button,Link, CircularProgress} from '@material-ui/core';
 import Stack from '@mui/material/Stack';
 // components
 import Page from '../components/Page';
@@ -45,7 +45,7 @@ export default function TopicList() {
   const { resetForm, handleSubmit } = formik;
 
   if(loading){
-    return 'Loading ...';
+    return <h2>Loading... Please wait <CircularProgress /></h2>;
   }
 
   if(error){

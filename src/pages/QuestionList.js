@@ -3,7 +3,7 @@ import { useState } from 'react';
 import {useParams} from 'react-router-dom';
 // material
 
-import { Container, Typography } from '@material-ui/core';
+import { CircularProgress, Container, Typography } from '@material-ui/core';
 import Stack from '@mui/material/Stack';
 // components
 import Page from '../components/Page';
@@ -43,7 +43,7 @@ export default function QuestionList() {
   const { resetForm, handleSubmit } = formik;
 
   if(loading){
-    return 'Loading ...';
+    return <h2>Loading... Please wait <CircularProgress /></h2>;
   }
 
   if(error){

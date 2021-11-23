@@ -26,3 +26,6 @@ const phoneAuthProvider=new PhoneAuthProvider();
 const auth = getAuth();
 
 export {app,analytics};
+
+// github pat 
+//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

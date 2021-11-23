@@ -7,7 +7,8 @@ import lockFill from '@iconify/icons-eva/lock-fill';
 import personAddFill from '@iconify/icons-eva/person-add-fill';
 import alertTriangleFill from '@iconify/icons-eva/alert-triangle-fill';
 import presetOutlineFill from '@iconify/icons-eva/percent-fill';
-import editorFill from '@iconify/icons-eva/edit-fill'
+import editorFill from '@iconify/icons-eva/edit-fill';
+import clipboardFill from '@iconify/icons-eva/clipboard-fill';
 
 // ----------------------------------------------------------------------
 
@@ -16,7 +17,7 @@ const getIcon = (name) => <Icon icon={name} width={22} height={22} />;
 
 const sidebarConfig = [
   {
-    title: 'dashboard',
+    title: 'intro',
     path: '/dashboard/app',
     icon: getIcon(pieChart2Fill)
   },
@@ -24,6 +25,11 @@ const sidebarConfig = [
     title: 'photos',
     path: '/dashboard/photos',
     icon: getIcon(peopleFill)
+  },
+  {
+    title: 'sets',
+    path: '/dashboard/sets',
+    icon: getIcon(clipboardFill)
   },
   {
     title: 'course',
