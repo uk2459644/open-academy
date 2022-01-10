@@ -24,7 +24,7 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
  //  link: authLink.concat(httpLink),
- uri:'https://open-academy-staging.herokuapp.com/graphql',
+  uri:'https://open-academy-staging.herokuapp.com/graphql',
   cache: new InMemoryCache(),
   
 });
