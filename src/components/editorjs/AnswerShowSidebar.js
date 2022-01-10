@@ -25,52 +25,59 @@ import Rating from '@mui/material/Rating';
 import Scrollbar from '../Scrollbar';
 import ColorManyPicker from '../ColorManyPicker';
 import { pink } from '@material-ui/core/colors';
+import { useEffect, useState } from 'react';
 
 // ----------------------------------------------------------------------
 
 export const FILTER_CATEGORY_OPTIONS = ['All', 'Shose', 'Apparel', 'Accessories'];
 
 // ----------------------------------------------------------------------
- QuestionDataSidebar.propTypes = {
-  isOpenFilter: PropTypes.bool,
-  onResetFilter: PropTypes.func,
-  onOpenFilter: PropTypes.func,
-  onCloseFilter: PropTypes.func,
-  formik: PropTypes.object,
-  units:PropTypes.array,
-  title:PropTypes.string
+ AnswerShowSidebar.propTypes = {
+  isOpenFilterans: PropTypes.bool,
+//  onResetFilterans: PropTypes.func,
+  onOpenFilterans: PropTypes.func,
+  onCloseFilterans: PropTypes.func,
+  formikans: PropTypes.object,
+  unitsans:PropTypes.array,
+  corrects:PropTypes.array,
+  wrongs:PropTypes.array,
+  visiteds:PropTypes.array,
+  titleans:PropTypes.string
 };
 
-export default function QuestionDataSidebar({
-  isOpenFilter,
-  onResetFilter,
-  onOpenFilter,
-  onCloseFilter,
-  formik,
-  units,
-  title
+export default function AnswerShowSidebar({
+  isOpenFilterans,
+ 
+  onOpenFilterans,
+  onCloseFilterans,
+  formikans,
+  unitsans,
+  titleans,
+  wrongs,
+  visiteds,
+  corrects
 }) {
-  const {  getFieldProps, handleChange } = formik;
-
+  const {  getFieldProps, handleChange,handleSubmit } = formikans;
+  
   return (
     <>
       <Button
         disableRipple
         color="inherit"
         endIcon={<Icon icon={roundFilterList} />}
-        onClick={onOpenFilter}
+        onClick={onOpenFilterans}
       >
-        {title}s&nbsp;
+        {titleans}&nbsp;
       </Button>
 
-      <FormikProvider value={formik}>
+      <FormikProvider value={formikans}>
         <Form autoComplete="off" noValidate>
           <Drawer
-            anchor="right"
-            open={isOpenFilter}
-            onClose={onCloseFilter}
+            anchor="bottom"
+            open={isOpenFilterans}
+            onClose={onCloseFilterans}
             PaperProps={{
-              sx: { width: 280, border: 'none', overflow: 'hidden' }
+              sx: {  border: 'none', overflow: 'hidden' }
             }}
           >
             <Stack
@@ -80,9 +87,9 @@ export default function QuestionDataSidebar({
               sx={{ px: 1, py: 2 }}
             >
               <Typography variant="subtitle1" sx={{ ml: 1 }}>
-               {title}s
+               {titleans}
               </Typography>
-              <IconButton onClick={onCloseFilter}>
+              <IconButton onClick={onCloseFilterans}>
                 <Icon icon={closeFill} width={20} height={20} />
               </IconButton>
             </Stack>
@@ -93,6 +100,39 @@ export default function QuestionDataSidebar({
               <Stack spacing={3} sx={{ p: 3 }}>
                
                 <div>
+                  {
+                    corrects.length > 0 ? (
+                       <Typography color="primary" variant='subtitle1' gutterBottom>
+                         Correct answers {corrects.length}.
+                       </Typography>
+                    ):(
+                      <Typography variant='subtitle1' gutterBottom>
+                        No correct answers.
+                      </Typography>
+                    )
+                  }
+                  {
+                    wrongs.length >0 ? (
+                      <Typography color="secondary" variant='subtitle1' gutterBottom>
+                        Wrong answers {wrongs.length}.
+                      </Typography>
+                    ):(
+                      <Typography  variant='subtitle1' gutterBottom>
+                        No wrong answers {visiteds.length}.
+                      </Typography>
+                    )
+                  }
+                  {
+                    visiteds.length >0 ? (
+                      <Typography variant='subtitle1' gutterBottom>
+                        Not answered {visiteds.length}.
+                      </Typography>
+                    ):(
+                      <Typography  variant='subtitle1' gutterBottom>
+                        No not answered.
+                      </Typography>
+                    )
+                  }
                   <Typography variant="subtitle1" gutterBottom>
                  {/* {title} list */}
                   </Typography>
@@ -101,7 +141,8 @@ export default function QuestionDataSidebar({
                   row={true}
                    onChange={handleChange}
                    >
-                    {units.map((item,index) => (
+                    {unitsans.map((item,index) => (
+                        
                       <FormControlLabel
                       
                        key={index} 
@@ -110,7 +151,7 @@ export default function QuestionDataSidebar({
                        control={<Radio 
                         //checked={item.userOpt !==null ? true : false}
                        />} 
-                       onChange={onResetFilter}
+                       onChange={handleSubmit}
                        label={index+1} />
                        
                     ))}

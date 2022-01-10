@@ -16,21 +16,19 @@ import { useEffect, useState } from 'react';
 
 const Checklist = require('@editorjs/checklist');
 
-ShowEditorjsData.propTypes={
-    contentData : PropTypes.object,
-    getIndexOption:PropTypes.func
+AnswerShowEditorjsData.propTypes={
+    contentData : PropTypes.object
 }
 let editor=null;
 
-export default function ShowEditorjsData({contentData,getIndexOption,questionNumber}){
+export default function AnswerShowEditorjsData({contentData}){
 
     const [editorjscreated,setEditorjscreated]=useState(false);
 
     useEffect(()=>{
 
         if(editor!==null && editorjscreated){
-
-            console.log('editor has initialized '+questionNumber);
+            console.log('editor has initialized');
             editor.clear();
             editor.render(contentData);
         } else {
@@ -46,10 +44,7 @@ export default function ShowEditorjsData({contentData,getIndexOption,questionNum
                   optionfour: {
                     class: Optionfour,
                     config:{
-                      showAnswer:false,
-                      questionNumber:questionNumber,
-                      getIndexOption:getIndexOption
-                     
+                      showAnswer:true,
                     }
                   },
                   mathk:{
@@ -85,7 +80,7 @@ export default function ShowEditorjsData({contentData,getIndexOption,questionNum
     
     
           
-    },[contentData,questionNumber]);
+    },[contentData]);
 
 
 

@@ -83,7 +83,7 @@ export default function SetCategory(){
          <Button 
           variant="contained"
          >
-          <Typography variant="subtitle2" noWrap>
+          <Typography variant="subtitle2" noWrap gutterBottom>
           {units[currentUnit].title}
           </Typography>
           </Button>

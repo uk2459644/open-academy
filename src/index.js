@@ -14,14 +14,17 @@ import  store  from './hooks/store';
 import { Provider } from 'react-redux';
 
 // import apollo client providers
-import {gql,ApolloClient,ApolloProvider,InMemoryCache} from '@apollo/client'
-
+import {ApolloProvider} from '@apollo/client';
+import { client } from './apolloclient';
 // ----------------------------------------------------------------------
 
-const client = new ApolloClient({
-  uri:'https://open-academy-staging.herokuapp.com/graphql',
-  cache:new InMemoryCache()
-});
+// backend url : https://open-academy-staging.herokuapp.com/graphql
+// localhpost backend url : http://localhost:1337/graphql
+
+// const client = new ApolloClient({
+//   uri:'https://open-academy-staging.herokuapp.com/graphql',
+//   cache:new InMemoryCache()
+// });
 
 ReactDOM.render(
   <HelmetProvider>

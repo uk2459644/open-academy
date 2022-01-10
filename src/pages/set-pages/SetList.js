@@ -100,8 +100,8 @@ export default function SetList() {
                 underline="hover"
                 component={RouterLink}
               >
-                <Button variant="contained">
-                  <Typography variant="subtitle2" noWrap>
+                <Button variant="contained" >
+                  <Typography variant="subtitle2" noWrap gutterBottom>
                     {units[currentUnit].title} Questions
                   </Typography>
                 </Button>

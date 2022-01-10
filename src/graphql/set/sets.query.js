@@ -12,3 +12,12 @@ query getSetbycategory($id:ID!){
     }
   }
 `
+
+export const GET_SETS=gql`
+query getSets{
+  setts(sort:"id:asc"){
+    id
+    title
+  }
+}
+`

@@ -40,7 +40,7 @@ const RootStyle = styled('div')(({ theme }) => ({
 const actions = [
   { icon: <PublishIcon />, name: 'Publish' },
   { icon: <CopyAllIcon />, name: 'Copy' },
-  // { icon: <PrintIcon />, name: 'Print' },
+   { icon: <PrintIcon />, name: 'Add' },
   // { icon: <ShareIcon />, name: 'Share' },
 ];
 
@@ -49,7 +49,7 @@ ContentSpeedDial.propTypes={
   copyDraft:PropTypes.func
 }
 
-export default function ContentSpeedDial({handleDraft,copyDraft}) {
+export default function ContentSpeedDial({handleDraft,copyDraft,handleContent}) {
   return (
       <RootStyle>
     <Box >
@@ -66,6 +66,8 @@ export default function ContentSpeedDial({handleDraft,copyDraft}) {
             onClick={()=>{
               if(action.name=='Copy'){
                 copyDraft();
+              }else if(action.name=='Add'){
+                handleContent();
               }else{
                 handleDraft();
               }

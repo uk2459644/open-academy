@@ -22,6 +22,8 @@ import Intro from './pages/Intro';
 import SetCategory from './pages/set-pages/SetCategory';
 import SetList from './pages/set-pages/SetList';
 import SetListQuestion from './pages/set-pages/SetListQuestion';
+import SetLogin from './pages/set-pages/SetLogin';
+import GetSetQuestions from './pages/set-pages/GetSetQuestions';
 
 // ----------------------------------------------------------------------
 
@@ -37,6 +39,7 @@ export default function Router() {
         { path: 'app', element: <Intro /> },
         { path: 'photos', element: <PhotosFolder /> },
         {path:'sets',element:<SetCategory />},
+        {path:'set-login',element:<SetLogin />},
         {path:'sets/:id',element:<SetList />},
         {path:'sets/:setCatId/:setId',element:<SetListQuestion />},
         { path: 'courses', element: <Products /> },

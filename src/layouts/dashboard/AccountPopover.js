@@ -14,6 +14,7 @@ import account from '../../_mocks_/account';
 import { useSelector } from 'react-redux';
 import { getAuth } from '@firebase/auth';
 import { app } from '../../firebase';
+import { client } from '../../apolloclient';
 // ----------------------------------------------------------------------
 
 const MENU_OPTIONS = [
@@ -57,6 +58,11 @@ export default function AccountPopover() {
     setOpen(false);
   };
 
+  const handleLogOut= ()=>{
+    auth.signOut();
+    client.resetStore();
+    
+  }
   return (
     <>
       <IconButton
@@ -135,7 +141,7 @@ export default function AccountPopover() {
 
         <Box sx={{ p: 2, pt: 1.5 }}>
           <Button fullWidth color="inherit" variant="outlined"
-           onClick={()=>{auth.signOut()}}
+           onClick={handleLogOut}
           >
             Logout
           </Button>

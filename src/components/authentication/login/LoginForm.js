@@ -16,12 +16,16 @@ import {
   FormControlLabel
 } from '@material-ui/core';
 import { LoadingButton } from '@material-ui/lab';
+import {gql,useMutation} from '@apollo/client';
+import { LOGIN } from '../../../graphql/login';
 
 // ----------------------------------------------------------------------
 
 export default function LoginForm() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+
+ 
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string().email('Email must be a valid email address').required('Email is required'),
@@ -35,10 +39,28 @@ export default function LoginForm() {
       remember: true
     },
     validationSchema: LoginSchema,
-    onSubmit: () => {
-      navigate('/dashboard', { replace: true });
+    onSubmit: (values) => {
+     
+      console.log(values);
+      login({variables:{email:values.email,password:values.password}});
+     // navigate('/dashboard', { replace: true });
     }
   });
+  const [login,{data,error,loading}]=useMutation(LOGIN);
+
+  if(loading){
+    return 'Submitting';
+  }
+  if(error){
+    return `Error ! ${error}`;
+  }
+  if(data){
+    console.log(data);
+    localStorage.setItem('token',data.login.jwt);
+
+    return `You have login with email ${data.login.user.email}`;
+    
+  }
 
   const { errors, touched, values, isSubmitting, handleSubmit, getFieldProps } = formik;
 

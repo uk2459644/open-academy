@@ -5,9 +5,9 @@ query getSetquestion($id:ID!){
     setquestions (sort:"id:asc" ,where:{sett:$id}) {
       id
       title
-      userOpt
-      correctOpt
-      correctMark
+      qNo
+      status
+     
       negativeMark
       correctMark
       content
@@ -15,5 +15,17 @@ query getSetquestion($id:ID!){
        id
      }
    }
+}
+`
+
+export const CREATE_SET_QUESTION=gql`
+mutation createQuestion($title:String!,$correctOpt:String!,$sett:ID!,$content:JSON!){
+  createSetquestion(input:{data:{title:$title,correctOpt:$correctOpt,sett:$sett,content:$content}}){
+    setquestion{
+      userOpt
+      id
+      title
+    }
+  }
 }
 `
