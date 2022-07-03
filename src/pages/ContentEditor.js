@@ -27,6 +27,7 @@ import { useSelector } from "react-redux";
 import { useMutation } from "@apollo/client";
 import { PUBLISH_DUNIT, UPDATE_DUNIT } from "../graphql/dunit/dunit.mutation";
 const Checklist = require("@editorjs/checklist");
+const CodeTool=require("@editorjs/code")
 
 // ----------------------------------------------------------------------
 
@@ -83,6 +84,7 @@ export default function ContentEditor() {
         chart: Chart,
         table: Table,
         alert: Alert,
+        code: CodeTool,
         optionfour: {
           class: Optionfour,
           config:{

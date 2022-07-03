@@ -15,6 +15,7 @@ import Table from '@editorjs/table';
 import { useEffect, useState } from 'react';
 
 const Checklist = require('@editorjs/checklist');
+const CodeTool=require("@editorjs/code")
 
 ShowEditorjsData.propTypes={
     contentData : PropTypes.object,
@@ -43,6 +44,7 @@ export default function ShowEditorjsData({contentData,getIndexOption,questionNum
                   chart:Chart,
                   table:Table,
                   alert:Alert,
+                  code: CodeTool,
                   optionfour: {
                     class: Optionfour,
                     config:{

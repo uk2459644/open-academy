@@ -1,4 +1,4 @@
-import { Container, Stack, Button, Typography, Modal } from "@material-ui/core";
+import { Container, Stack, Button, Typography, Modal, CircularProgress } from "@material-ui/core";
 import * as React from 'react';
 import Page from "../components/Page";
 //icons
@@ -23,6 +23,7 @@ export default function PhotosFolder() {
   const [folders,setFolders]=React.useState([]);
   
   // authentication sections
+  const [loading,setLoading]=React.useState(true);
 
  
 /**
@@ -37,6 +38,7 @@ useEffect(()=>{
     
     // const folders=query(folderRef,limitToLast(100));
     onValue(folderRef, (snapshot) => {
+      setLoading(false);
       snapshot.forEach((childSnapshot) => {
         const childKey = childSnapshot.key;
         const childData = childSnapshot.val();
@@ -76,12 +78,28 @@ useEffect(()=>{
           </Typography> */}
           <PhotosFolderForm />
         </Stack>
-        <Typography variant="h4" gutterBottom>
+        {
+          loading ? (
+            <h4>
+              Please wait ....
+              <CircularProgress />
+            </h4>
+          ) : (
+            <div>
+            <Typography variant="h4" gutterBottom>
             Photos Folder
           </Typography>
+          <div>
           {
             folders.length >0 ? (  <FolderList folders={folders} />):(null)
           }
+
+          </div>
+          </div>
+         
+          )
+        }
+       
         
       </Container>
         ) :
