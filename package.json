@@ -29,7 +29,7 @@
     "@material-ui/lab": "^5.0.0-alpha.40",
     "@material-ui/styles": "^5.0.0-beta.1",
     "@material-ui/utils": "^5.0.0-beta.0",
-    "@mui/icons-material": "^5.0.3",
+    "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.0.1",
     "@reduxjs/toolkit": "^1.6.2",
     "@testing-library/jest-dom": "^5.11.4",

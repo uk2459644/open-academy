@@ -7,7 +7,7 @@ import { setContext } from '@apollo/client/link/context';
 
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:1337/graphql',
+  uri: 'https://open-academy-strapi.onrender.com/graphql',
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -24,7 +24,7 @@ const authLink = setContext((_, { headers }) => {
 
 const client = new ApolloClient({
  //  link: authLink.concat(httpLink),
-  uri:'http://localhost:1337/graphql',
+  uri:'https://open-academy-strapi.onrender.com/graphql',
   cache: new InMemoryCache(),
   
 });
