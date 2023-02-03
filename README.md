@@ -1,5 +1,7 @@
 # Open Academy (React Project)
 
+![open-academy](https://user-images.githubusercontent.com/75515703/216514593-2d24ee3d-c085-4c1f-9a79-467b9e2a2262.gif)
+
 This project has created as fullstack project, frontend with React and Backend on Strapi.
 You can visit [Frontend](https://open-academy-63ad7.web.app/dashboard/app) and [Backend](https://open-academy-strapi.onrender.com/admin).
 
